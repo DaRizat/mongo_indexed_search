@@ -1,0 +1,4 @@
+.well.inner-well
+  %h3 New Hardware
+  = render partial: "hardwares/form", locals: {hardware: @hardware}
+  = link_to "Back to Hardware", hardwares_path

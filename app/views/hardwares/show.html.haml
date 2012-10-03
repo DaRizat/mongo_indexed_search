@@ -1,0 +1,38 @@
+.well.inner-well
+  %table.table.table-condensed{ :style => "margin-bottom: 0" }
+    %tr
+      %th{ :colspan => 2 }
+        %h4.pull-left Hardware
+        .pull-right
+          = link_to "edit", {action: 'edit', id: @id}
+          |
+          = link_to "delete", hardware_path(@hardware), method: "delete"
+    %tr
+      %td Make
+      %td
+        = @make
+    %tr  
+      %td Model
+      %td
+        = @model
+    %tr
+      %td Serial Number
+      %td
+        = @serial_number
+    %tr
+      %td Hardware Status
+      %td
+        = @hardware_status
+    %tr
+      %td Purchased On
+      %td
+        = @purchased_on
+    %tr
+      %td Sold On
+      %td
+        = @sold_on
+    %tr
+      %td Installed On
+      %td
+        = @installed_on
+= link_to "Back to Hardware", hardwares_path

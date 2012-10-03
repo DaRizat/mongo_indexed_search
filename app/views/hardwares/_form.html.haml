@@ -1,0 +1,9 @@
+= simple_form_for hardware do |h|
+  = h.input :make, required: true
+  = h.input :model, required: true
+  = h.input :serial_number, required: true
+  = h.select :hardware_status, {"Active" => true, "Inactive" => false}
+  = h.input :purchased_on, as: :string, :input_html => { :class => "datepicker", :value => h.object.purchased_on.nil? ? nil : h.object.purchased_on }
+  = h.input :sold_on, as: :string, :input_html => { :class => "datepicker", :value => h.object.sold_on.nil? ? nil : h.object.sold_on }
+  = h.input :installed_on, as: :string, :input_html => { :class => "datepicker", :value => h.object.installed_on.nil? ? nil : h.object.installed_on }
+  = h.button :submit
