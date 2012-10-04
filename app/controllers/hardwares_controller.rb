@@ -1,11 +1,8 @@
 class HardwaresController < ApplicationController
 	def index
-		@page = params[:page] || 1
-		@hardwares = Hardware.page(@page)
-
 		respond_to do |format|
 			format.html
-			format.json { render :json => @hardwares }
+			format.json { render json: HardwaresDatatable.new(view_context) }
 		end
 	end
 
