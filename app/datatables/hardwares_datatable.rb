@@ -37,10 +37,10 @@ private
   end
 
   def fetch_hardwares
-    hardwares = Hardware.page(page).per(per_page)
-    
     if params[:sSearch].present?
-      hardwares  = Hardware.where("name like :search or category like :search", search: "%#{params[:sSearch]}%")
+      hardwares = Hardware.full_text_search("%#{params[:sSearch]}%").page(page).per(per_page)
+    else
+      hardwares = Hardware.page(page).per(per_page)
     end
 
     hardwares
