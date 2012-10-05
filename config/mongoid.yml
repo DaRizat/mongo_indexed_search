@@ -89,3 +89,4 @@ test:
         - localhost:27017
       options:
         consistency: :strong
+  options:

@@ -37,10 +37,12 @@ private
   end
 
   def fetch_hardwares
+    #hardwares = Hardware.order("#{sort_column} #{sort_direction}")
+    hardwares = Hardware.order_by([[sort_column, sort_direction]])
     if params[:sSearch].present?
-      hardwares = Hardware.full_text_search("%#{params[:sSearch]}%").page(page).per(per_page)
+      hardwares = hardwares.full_text_search("%#{params[:sSearch]}%").page(page).per(per_page)
     else
-      hardwares = Hardware.page(page).per(per_page)
+      hardwares = hardwares.page(page).per(per_page)
     end
 
     hardwares
