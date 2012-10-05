@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'less'
 gem 'less-rails'
 gem 'mongoid'
+gem 'mongoid_search'
 gem 'simple_form'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
@@ -44,7 +45,9 @@ gem 'ui_datepicker-rails3'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
+gem 'capistrano-ext'
+gem 'rvm-capistrano'
 
 # To use debugger
 # gem 'debugger'

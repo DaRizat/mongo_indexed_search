@@ -1,6 +1,9 @@
 class Hardware
   include Mongoid::Document
+  include Mongoid::Search
+
   paginates_per 1
+
   field :make, type: String
   field :model, type: String
   field :serial_number, type: String
@@ -11,4 +14,6 @@ class Hardware
   field :sold_on, type: Date
   field :installed_on, type: Date
   field :processing_time, type: Integer
+
+  search_in :make, :model, :serial_number
 end

@@ -13,16 +13,17 @@ class HardwaresDatatable
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: Hardware.count,
-      #iTotalDisplayRecords: hardwares.total_entries,
-      aaData: data
+      aaData: data,
+      iTotalDisplayRecords: @hardwares.count
     }
   end
 
 private
 
   def data
-    puts hardwares
+    Rails.logger.info "Hello hardwares #{hardwares}"
     hardwares.map do |hardware|
+      Rails.logger.info "Hardware map #{hardware}"
       [
         h(hardware.make),
         h(hardware.model),
@@ -36,11 +37,12 @@ private
   end
 
   def fetch_hardwares
-    #hardwares = Hardware.all
-    #hardwares = Hardware.page(:page => 1, :per_page => 30)
-    hardwares = Hardware.page(2).per(1)
-    #hardwares = Hardware.joins(:building).order("#{sort_column} #{sort_direction}")
-    #hardwares = hardwares.page(page).per_page(per_page)
+    if params[:sSearch].present?
+      hardwares = Hardware.full_text_search("%#{params[:sSearch]}%").page(page).per(per_page)
+    else
+      hardwares = Hardware.page(page).per(per_page)
+    end
+
     hardwares
   end
 
