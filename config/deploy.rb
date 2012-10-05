@@ -75,6 +75,12 @@ namespace :deploy do
       puts "\n\n=== Creating the Production Database! ===\n\n"
       run "cd #{current_path}; rake db:create RAILS_ENV=production"
     end
+
+    desc "Seed Production Database"
+    task :seed do
+      puts "\n\n=== Seeding the Production Database ===\n\n"
+      run "cd #{current_path}; rake db:seed RAILS_ENV=production"
+    end
   
     desc "Migrate Production Database"
     task :migrate do
